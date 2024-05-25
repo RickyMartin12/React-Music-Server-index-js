@@ -37,7 +37,7 @@ function getSongDetails(type, dir){
 
 app.use(function (req, res, next) {
     //Enabling CORS
-    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Origin", "https://react-music-server-index-7sn3n0nrn.vercel.app");
     res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
     res.header("Access-Control-Allow-Headers", 
     "Origin, X-Requested-With, Content-Type, Accept, x-client-key, x-client-token, x-client-secret, Authorization");
@@ -68,16 +68,6 @@ app.get(`/song`, (req, res) => {
 
     res.status(200).json({ appData });
 });
-
-
-app.use('/api', createProxyMiddleware({ 
-    target: 'http://localhost:8080/', //original url
-    changeOrigin: true, 
-    //secure: false,
-    onProxyRes: function (proxyRes, req, res) {
-       proxyRes.headers['Access-Control-Allow-Origin'] = '*';
-    }
-}));
 
 app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`);
