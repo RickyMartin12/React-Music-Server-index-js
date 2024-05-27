@@ -37,9 +37,15 @@ function getSongDetails(type, dir){
 
 app.use(function (req, res, next) {
     //Enabling CORS
+	res.header('Access-Control-Allow-Credentials', true)
     res.header("Access-Control-Allow-Origin", "*");
-	res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
-	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, x-client-key, x-client-token, x-client-secret");
+	//res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
+	res.header('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
+	//res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, x-client-key, x-client-token, x-client-secret, Authorization");
+	res.header(
+    'Access-Control-Allow-Headers',
+    'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
+	);
       next();
     });
 
