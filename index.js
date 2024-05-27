@@ -45,11 +45,7 @@ app.use(function (req, res, next) {
 
   httpServer = http.createServer(app);
 
-const allowedOrigins = ['http://localhost:3001']; 
-const corsOption = {
-    origin: allowedOrigins,
-};
-app.use(cors(corsOptions));
+app.use(cors());
 app.use('/music', express.static(__dirname + '/music'));
 
 app.get('/', (req, res) => {
