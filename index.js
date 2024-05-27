@@ -48,6 +48,10 @@ app.use(function (req, res, next) {
 app.use(cors());
 app.use('/music', express.static(__dirname + '/music'));
 
+app.get('/', (req, res) => {
+  res.send('Song Lists')
+})
+
 app.get(`/song`, (req, res) => {
     const songData = {};
     for(let type in __AUDIO_TYPE__){
